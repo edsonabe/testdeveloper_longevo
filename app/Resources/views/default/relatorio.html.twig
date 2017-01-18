@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1>Relatório</h1>
+	<form name="form_relatorio" id="form_relatorio" action="/relatorio/" method="post" onsubmit="return valida_relatorio(this)">
+		<div class="col-lg-5 no-padding">
+			<div class="form-group">
+				<label>E-mail:</label>
+				<input type="email" name="email" id="email" class="form-control" placeholder="Filtrar por e-mail.">
+			</div>
+		</div>
+		<div class="col-lg-5">
+			<div class="form-group">
+				<label>Número do pedido:</label>
+				<input type="text" name="numero_pedido" id="numero_pedido" class="form-control" placeholder="Filtrar por número do pedido">
+			</div>
+		</div>
+		<div class="col-lg-2 no-padding">		
+			<button type="submit" class="btn btn-primary btn-filtrar"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Filtrar</button>
+			<a href="/relatorio" class="btn btn-warning btn-filtrar"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Limpar</a>
+		</div>
+	</form>
+	<table id="table_relatorio" class="table table-striped">
+		<thead>
+			<tr>
+				<th width="150">Número do pedido</th>
+				<th>Nome</th>
+				<th>E-mail</th>
+				<th>Título</th>
+				<th>Observação</th>
+			</tr>
+		</thead>
+		<tbody>
+		
+			{% if chamados %}
+				{% for chamado in chamados %}
+					<tr>
+						<td>{{chamado.getPedido.getNumeroPedido}}</td>
+						<td>{{chamado.getPedido.getCliente.getNome}}</td>
+						<td>{{chamado.getPedido.getCliente.getEmail}}</td>
+						<td>{{chamado.getTitulo}}</td>
+						<td>{{chamado.getObservacao}}</td>
+					</tr>
+				{% endfor %}
+			{% else %}
+				<tr>
+					<td colspan="4" align="center">Não existem chamados cadastrados</td>
+				</tr>
+			{% endif %}
+		</tbody>
+	</table>
+{% endblock %}

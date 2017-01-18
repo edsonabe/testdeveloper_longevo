@@ -1,0 +1,20 @@
+form .status img {
+	margin:0 5px 0 0;
+	vertical-align: middle;
+}
+.erro{
+	background:url(bg-input.jpg) repeat-x left top #FBF0EE !important;
+	border:1px solid #CC0000 !important;
+	color:#C61B1B;
+}
+.erro-checkbox{
+	color:#C61B1B !important;
+}
+.retorno{
+	margin-top:3px;
+	font-size:10px;
+	color:#C61B1B;
+	float:left;
+	clear:left;
+	*width:100%;
+}
