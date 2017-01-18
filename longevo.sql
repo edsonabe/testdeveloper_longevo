@@ -138,39 +138,6 @@ ALTER SEQUENCE pedidos_pk_pedido_seq OWNED BY pedidos.pk_pedido;
 
 
 --
--- Name: teste; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE teste (
-    cli_codigo integer NOT NULL,
-    cli_nome character varying(30) NOT NULL
-);
-
-
-ALTER TABLE teste OWNER TO postgres;
-
---
--- Name: teste_cli_codigo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE teste_cli_codigo_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE teste_cli_codigo_seq OWNER TO postgres;
-
---
--- Name: teste_cli_codigo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE teste_cli_codigo_seq OWNED BY teste.cli_codigo;
-
-
---
 -- Name: chamados pk_chamado; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -189,13 +156,6 @@ ALTER TABLE ONLY clientes ALTER COLUMN pk_cliente SET DEFAULT nextval('clientes_
 --
 
 ALTER TABLE ONLY pedidos ALTER COLUMN pk_pedido SET DEFAULT nextval('pedidos_pk_pedido_seq'::regclass);
-
-
---
--- Name: teste cli_codigo; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY teste ALTER COLUMN cli_codigo SET DEFAULT nextval('teste_cli_codigo_seq'::regclass);
 
 
 --
@@ -267,19 +227,6 @@ SELECT pg_catalog.setval('pedidos_pk_pedido_seq', 15, true);
 
 
 --
--- Data for Name: teste; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Name: teste_cli_codigo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('teste_cli_codigo_seq', 1, true);
-
-
---
 -- Name: chamados pk_chamado; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -293,14 +240,6 @@ ALTER TABLE ONLY chamados
 
 ALTER TABLE ONLY clientes
     ADD CONSTRAINT pk_cliente PRIMARY KEY (pk_cliente);
-
-
---
--- Name: teste pk_codigo; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY teste
-    ADD CONSTRAINT pk_codigo PRIMARY KEY (cli_codigo);
 
 
 --
